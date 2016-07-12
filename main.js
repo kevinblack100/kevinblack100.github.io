@@ -1,15 +1,17 @@
 var studentIndex = [
-  { name: "Kevin Black",
-    username: "kevinblack100",
-    comment: "(This page)" }
+  { name: "Mark Snyder",
+    url: "https://markwsnyder.github.io",
+    comment: "" },
+  { name: "Torick Davis",
+    url: "https://zarick13.bitbucket.org",
+    comment: "" }
 ];
 var linkList = document.getElementById("linkList");
 for (var i = 0, N = studentIndex.length; i < N; ++i) {
     var info = studentIndex[i];
     
     var studentLink = document.createElement("a");
-    var url = "https://" + info.username + ".github.io";
-    studentLink.setAttribute("href", url);
+    studentLink.setAttribute("href", info.url);
     studentLink.innerHTML = info.name;
     
     var comment = document.createElement("span");
