@@ -3,7 +3,19 @@ var studentIndex = [
     url: "https://markwsnyder.github.io",
     comment: "" },
   { name: "Torick Davis",
-    url: "https://zarick13.bitbucket.org",
+    url: "http://zarick13.bitbucket.org",
+    comment: "" },
+  { name: "Brayden Lemke",
+    url: "https://joybob22.github.io",
+    comment: "" },
+  { name: "Andrew Ward",
+    url: "https://ward-spacecase.github.io",
+    comment: "" },
+  { name: "Chris Luangrath",
+    url: "https://chris-luangrath.github.io",
+    comment: "" },
+  { name: "Sam Ruiz",
+    url: "https://ruizdev.github.io",
     comment: "" }
 ];
 var linkList = document.getElementById("linkList");
