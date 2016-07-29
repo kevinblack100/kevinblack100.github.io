@@ -1,0 +1,4 @@
+{
+    "name": "jwt_demo",
+    "main": "server.js"
+}
