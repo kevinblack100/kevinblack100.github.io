@@ -2,26 +2,26 @@ td {
     border: 1px solid;
 }
 
-#blueBtn {
+.blue {
     color: #0000ff;
 }
 
-#redBtn {
+.red {
     color: #ff0000;
 }
 
-#greenBtn {
+.green {
     color: #00ff00;
 }
 
-#purpleBtn {
+.purple {
     color: #ff00ff;
 }
 
-#yellowBtn {
+.yellow {
     color: #ffbb00;
 }
 
-#cyanBtn {
+.cyan {
     color: #00ffff;
 }
