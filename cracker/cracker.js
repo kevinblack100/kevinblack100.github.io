@@ -11,19 +11,24 @@ const colors = [
     'cyan'
 ];
 
+const COLOR_INDEX_NONE = 0;
 var currentColorIndex = 1;
 
 
 const codeLength = 4;
 // stores completed guess
 // indices into the colors array
-const guesses = [
-    [ 1, 2, 3, 4 ], // dummy data for testing
-    [ 5, 6, 1, 2 ]
-    ];
+const guesses = [];
 const maxNumGuesses = 10;
 
-var currentGuess = [ 0, 1, 0, 4 ];
+var currentGuess;
+
+function initializeData() {
+    currentGuess = [];
+    for (var c = 0; c < codeLength; ++c) {
+        currentGuess.push(COLOR_INDEX_NONE);
+    }
+}
 
 
 // ========================================================
@@ -50,6 +55,8 @@ function setupButtons() {
         const btn = document.getElementById(btnId);
         btn.onclick = colorSetter(i);
     }
+    const submitGuessBtn = document.getElementById('submitGuessBtn');
+    submitGuessBtn.onclick = submitGuess;
 }
 
 // ========================================================
@@ -109,10 +116,35 @@ function currentGuessSetter(index) {
     };
 }
 
+function submitGuess() {
+    // determine if the guess is complete
+    var complete = true;
+    for (var c = 0; c < codeLength; ++c) {
+        const colorIndex = currentGuess[c];
+        if (colorIndex == COLOR_INDEX_NONE) {
+            complete = false;
+            break;
+        }
+    }
+    
+    if (complete) {
+        guesses.push(currentGuess);
+        currentGuess = [];
+        for (var c = 0; c < codeLength; ++c) {
+            currentGuess[c] = COLOR_INDEX_NONE;
+        }
+        drawGuessGrid();
+    }
+    else {
+        alert('The guess is not complete.');
+    }
+}
+
 // ========================================================
 // General Setup
 
 window.addEventListener('load', function() {
+    initializeData();
     setupButtons();
     drawGuessGrid();
 }, false);
