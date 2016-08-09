@@ -1,0 +1,27 @@
+td {
+    border: 1px solid;
+}
+
+#blueBtn {
+    color: #0000ff;
+}
+
+#redBtn {
+    color: #ff0000;
+}
+
+#greenBtn {
+    color: #00ff00;
+}
+
+#purpleBtn {
+    color: #ff00ff;
+}
+
+#yellowBtn {
+    color: #ffbb00;
+}
+
+#cyanBtn {
+    color: #00ffff;
+}
