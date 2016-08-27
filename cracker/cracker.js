@@ -12,10 +12,12 @@ const colors = [
 ];
 
 const COLOR_INDEX_NONE = 0;
+const NUM_COLORS = colors.length;
 var currentColorIndex = 1;
 
 
 const codeLength = 4;
+var hiddenCode;
 // stores completed guess
 // indices into the colors array
 const guesses = [];
@@ -24,6 +26,12 @@ const maxNumGuesses = 10;
 var currentGuess;
 
 function initializeData() {
+    hiddenCode = [];
+    for (var c = 0; c < codeLength; ++c) {
+        const randomColorIndex = Math.floor(Math.random() * (NUM_COLORS-1)) + 1;
+        hiddenCode.push(randomColorIndex);
+    }
+    
     currentGuess = [];
     for (var c = 0; c < codeLength; ++c) {
         currentGuess.push(COLOR_INDEX_NONE);
@@ -57,6 +65,23 @@ function setupButtons() {
     }
     const submitGuessBtn = document.getElementById('submitGuessBtn');
     submitGuessBtn.onclick = submitGuess;
+}
+
+// ========================================================
+// Hidden Code
+
+function drawCode() {
+    // TODO only show the colors if solved
+    const codeRow = document.getElementById('codeRow');
+    codeRow.innerHTML = "";
+    for (var c = 0; c < codeLength; ++c) {
+        const cell = document.createElement('td');
+        const colorIndex = hiddenCode[c];
+        const color = colors[colorIndex];
+        cell.className = color;
+        cell.innerHTML = color;
+        codeRow.appendChild(cell);
+    }
 }
 
 // ========================================================
@@ -105,7 +130,7 @@ function drawGuessGrid() {
 function setCurrentGuess(index) {
     if (index >= 0 && index < codeLength) {
         currentGuess[index] = currentColorIndex;
-        drawGuessGrid();
+        drawGame();
     }
     // else don't do anything
 }
@@ -133,11 +158,19 @@ function submitGuess() {
         for (var c = 0; c < codeLength; ++c) {
             currentGuess[c] = COLOR_INDEX_NONE;
         }
-        drawGuessGrid();
+        drawGame();
     }
     else {
         alert('The guess is not complete.');
     }
+}
+
+// ========================================================
+// Draw Game
+
+function drawGame() {
+    drawCode();
+    drawGuessGrid();
 }
 
 // ========================================================
@@ -146,5 +179,5 @@ function submitGuess() {
 window.addEventListener('load', function() {
     initializeData();
     setupButtons();
-    drawGuessGrid();
+    drawGame();
 }, false);
